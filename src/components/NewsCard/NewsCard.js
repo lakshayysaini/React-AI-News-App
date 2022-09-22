@@ -1,6 +1,5 @@
 import React, {useEffect, useState, createRef}from 'react';
-import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography, createTheme } from '@material-ui/core';
-import classNames from 'classnames';
+import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 
 import useStyles from './styles.js';
 
@@ -12,6 +11,8 @@ const NewsCard = ({article :{description, publishedAt, source, title, url, urlTo
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
 
   useEffect(()=>{
+    window.scroll(0,0);
+
     setElRefs((refs) => Array(20).fill().map((_,j) =>refs[j] || createRef()));
   }, []);
 
@@ -19,11 +20,11 @@ const NewsCard = ({article :{description, publishedAt, source, title, url, urlTo
       if(i=== activeArticle && elRefs[activeArticle]){
         scrollToRef(elRefs[activeArticle]);
       }
-  },[i, activeArticle, elRefs])
+  },[i, activeArticle, elRefs]);
 
 
   return (
-    <Card ref={elRefs[i]} className={classNames(classes.card, activeArticle === i ? classes.activeCard : null )}>
+    <Card ref={elRefs[i]} className={activeArticle === i ? classes.activeCard : classes.card}>
       <CardActionArea href={url} target="_blank">
           <CardMedia className={classes.media} image={urlToImage || 'https://thumbs.dreamstime.com/b/news-newspapers-folded-stacked-word-wooden-block-puzzle-dice-concept-newspaper-media-press-release-42301371.jpg'}/>
           <div className={classes.details}>

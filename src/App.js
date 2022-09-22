@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import wordsToNumbers from "words-to-numbers";
-
 import useStyles from './styles.js';
 
 import NewsCards from "./components/NewsCards/NewsCards";
@@ -24,7 +23,7 @@ const App = () => {
                     setActiveArticle((prevActiveArticle) => prevActiveArticle +1);
                 } else if(command === 'open'){
                     const parsedNumber = number.length > 2 ? wordsToNumbers((number),{fuzzy: true}) : number;
-                    const article = articles[parsedNumber-1];
+                    const article = articles[parsedNumber -1];
                     
                     if (parsedNumber > articles.length) {
                         alanBtn().playText('Please try that again...');
@@ -50,3 +49,19 @@ const App = () => {
 }
 
 export default App;
+// return (
+//     <div>
+//       <div className={classes.logoContainer}>
+//         {newsArticles.length ? (
+//           <div className={classes.infoContainer}>
+//             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
+//             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Go back</Typography></div>
+//           </div>
+//         ) : null}
+//         <img src="https://i.ibb.co/qygzDzL/Alan.png" className={classes.alanLogo} alt="logo" />
+//       </div>
+//       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
+//     </div>
+// )};
+
+// export default App;
