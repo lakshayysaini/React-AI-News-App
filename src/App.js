@@ -15,7 +15,7 @@ const App = () => {
             key: alankey,
             onCommand: ({command, articles}) => {
                 if(command === 'newHeadlines'){
-                    alert('This code was executed');
+                    setNewsArticles(articles);
                 }
             }
         })
