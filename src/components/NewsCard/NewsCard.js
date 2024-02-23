@@ -23,6 +23,7 @@ const NewsCard = ({article :{description, publishedAt, source, title, url, urlTo
   },[i, activeArticle, elRefs]);
 
 
+
   return (
     <Card ref={elRefs[i]} className={activeArticle === i ? classes.activeCard : classes.card}>
       <CardActionArea href={url} target="_blank">
